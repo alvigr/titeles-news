@@ -1,12 +1,12 @@
 const cache = (request, time) => {
-  let resultPromis;
+  let resultPromise;
   let reqestSent = false;
   let completedAt = 0;
 
   return () => {
     let now = Date.now();
     if (now - completedAt > time && !reqestSent) {
-      return resultPromis = new Promise ((resolve, reject) => {
+      return resultPromise = new Promise ((resolve) => {
         reqestSent = true;
         resolve(request());
       }).then((data) => {
@@ -15,7 +15,7 @@ const cache = (request, time) => {
         return data;
       })
     } else {
-      return resultPromis;
+      return resultPromise;
     }
   };
 };
