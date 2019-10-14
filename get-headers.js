@@ -4,7 +4,7 @@ const parser = new Parser();
 const getHeaders = async () => {
   let feed = await parser.parseURL('https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en');
   const titles = [];
-  console.log('Parse titles')
+  console.log('Parse titles');
   feed.items.forEach(item => {
     titles.push(item.title);
   });

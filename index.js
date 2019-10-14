@@ -12,10 +12,10 @@ app.listen(PORT, (error) => {
   console.log(`Server listening on port ${PORT}`);
 });
 
-const getHeadersCached = cache(getHeaders, 10000)
+const getHeadersCached = cache(getHeaders, 10000);
 
 app.get('/', async (req, res) => { 
-  res.send(await getHeadersCached())
+  res.send(await getHeadersCached());
 })
  
 module.exports = app;
