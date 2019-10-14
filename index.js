@@ -1,5 +1,5 @@
 const express = require('express');
-const getHeaders = require('./get-headers.js');
+const getTitles = require('./get-titles.js/index.js');
 const cache = require('./cache.js');
 const app = express();
 
@@ -12,11 +12,11 @@ app.listen(PORT, (error) => {
   console.log(`Server listening on port ${PORT}`);
 });
 
-const getHeadersCached = cache(getHeaders, 10000);
+const getTitlesCached = cache(getTitles, 10000);
 
 app.get('/', async (req, res) => { 
   try {
-    res.status(200).send(await getHeadersCached());
+    res.status(200).send(await getTitlesCached());
   } catch (error) {
     res.status(500).send({  message: error.message });
   }

@@ -1,5 +1,5 @@
 const cache = require('../cache.js');
-const getHeaders = require('../get-headers.js');
+const getTitles = require('../get-titles.js/index.js');
 
 const origNow = Date.now;
 
@@ -9,7 +9,7 @@ afterEach(() => {
 
 describe('Cheack geting headers to cache', () => {
   test('Cache return array', async () => {
-    const getDataCached = cache(getHeaders, 1000);
+    const getDataCached = cache(getTitles, 1000);
     const result = await getDataCached();
     expect(result.length).toBeGreaterThan(0);
   });
