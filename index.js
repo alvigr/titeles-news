@@ -15,7 +15,11 @@ app.listen(PORT, (error) => {
 const getHeadersCached = cache(getHeaders, 10000);
 
 app.get('/', async (req, res) => { 
-  res.send(await getHeadersCached());
-})
+  try {
+    res.status(200).send(await getHeadersCached());
+  } catch (error) {
+    res.status(500).send({  message: error.message });
+  }
+});
  
 module.exports = app;

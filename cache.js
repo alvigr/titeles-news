@@ -9,7 +9,7 @@ const cache = (request, time) => {
       return resultPromise = new Promise ((resolve) => {
         reqestSent = true;
         resolve(request());
-      }).then((data) => {
+      }).finally((data) => {
         completedAt = Date.now();
         reqestSent = false;
         return data;
